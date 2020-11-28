@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FrisellaVation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div>
+      <div>
+        <h1>FrisellaVation</h1>
+      </div>
+      <div class="dm-icon-container">
+        <img class="dm-icon" src="./assets/imgs/day-mode.png">
+      </div>
+    </div>
+    <div class="keys">
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">Answering</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">Bottom Line</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">By the Way</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">Winning</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd>
+        <span class="sound">Fantasy</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">No Winning</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">Your Goals</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">Hard Work</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">Least Work</span>
+      </div>
+      <div data-key="186" class="key">
+        <kbd>;</kbd>
+        <span class="sound">Excuses</span>
+      </div>
+    </div>
+    <div class="key-space">
+      <div data-key="32" class="key key-stop">
+        <kbd>Space</kbd>
+        <span class="sound">Stop Playing Quote</span>
+      </div>
+    </div>
+  </div>
+    
+    <audio data-key="65" src="sounds/12.5.18_Audio_277-answeringToEveryone.mp3"></audio>
+    <audio data-key="83" src="sounds/12.5.18_Audio_277-bottomLine.mp3"></audio>
+    <audio data-key="68" src="sounds/12.5.18_Audio_277-ByTheWay.mp3"></audio>
+    <audio data-key="70" src="sounds/12.5.18_Audio_277-choose2win.mp3"></audio>
+    <audio data-key="71" src="sounds/12.5.18_Audio_277-coronaCommercial.mp3"></audio>
+    <audio data-key="72" src="sounds/12.5.18_Audio_277-exerience.mp3"></audio>
+    <audio data-key="74" src="sounds/12.5.18_Audio_277-goals.mp3"></audio>
+    <audio data-key="75" src="sounds/12.5.18_Audio_277-hardWorkMakesYouHappy.mp3"></audio>
+    <audio data-key="76" src="sounds/12.5.18_Audio_277-leastAmountOfWork.mp3"></audio>
+    <audio data-key="186" src="sounds/12.5.18_Audio_277-No_excuses.mp3"></audio>
+    
+    <script>
+      function stopSound(e) {
+        const allAudioPause = document.querySelectorAll('audio');
+        allAudioPause.forEach(audio => audio.pause());
+      }
+      function playSound(e) {
+        stopSound();
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        if (!audio) return;
+        
+        audio.currentTime = 0; // rewinds to the start of the track when you hit the key again.
+        audio.play();
+        key.classList.add('playing')
+      }
+      
+      function removeTransition(e) {
+        if (e.propertyName !== 'transform') return // skip it if it is not a transform
+        this.classList.remove('playing');
+      }
+      
+      const keys = document.querySelectorAll(".key");
+      keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+      
+      window.addEventListener('keydown', playSound);
+      window.addEventListener('click', stopSound);
+
+      const h1Element = document.querySelector('h1');
+      const h1Classes = h1Element.classList;
+      const htmlElement = document.querySelector('html');
+      const htmlClasses = htmlElement.classList;
+      const spanElement = document.querySelectorAll('.sound');
+      const dmIcon = document.querySelector('.dm-icon');
+      const dmToggle = document.querySelector('img');
+  
+      dmToggle.addEventListener('click', function(){
+        h1Classes.toggle("dm-h1");
+        htmlClasses.toggle("dm-html");
+        keys.forEach(key => key.classList.toggle("dm-key"));
+        spanElement.forEach(span => span.classList.toggle('dm-sound'));
+        if(dmIcon.src.match("./assets/imgs/day-mode.png")) {
+          dmIcon.src = "./assets/imgs/night-mode.png";
+        } else {
+          dmIcon.src = "./assets/imgs/day-mode.png"
+        }
+      });
+    </script>
+
+
+</body>
+</html>

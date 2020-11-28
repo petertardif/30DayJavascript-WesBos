@@ -1,0 +1,112 @@
+:root {
+  --dm-first-color: #0D0D0D;
+  --dm-second-color: #404040;
+  --dm-third-color: #737373;
+  --dm-fourth-color: #FFFFFF;
+  --dm-fifth-color: #DD0010;
+  --lm-first-color: #ebebeb;
+  --lm-second-color: #b6b4b4;
+  --lm-third-color: #3e3b3b;
+  --lm-fourth-color: #0D0D0D;
+  --lm-fifth-color: #ffe100;
+}
+
+html {
+  font-size: 10px;
+  background: url('./assets/imgs/andy-frisella-buttonImage-removebg.png');
+  background-size: cover;
+  background-color: var(--dm-first-color);
+}
+.dm-html {
+  background-color: var(--lm-first-color);
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  margin: 25px;
+  color: var(--dm-fourth-color);
+  text-shadow: 0 0 .2rem var(--dm-fourth-color);
+}
+
+.dm-h1 {
+  color: var(--lm-fourth-color);
+  text-shadow: 0 0 .2rem var(--lm-fourth-color);
+}
+
+.dm-icon-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 5em;
+  padding-left: 5em;
+}
+
+.dm-icon {
+  width: 5rem;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 60vh;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.key {
+  border: .4rem solid var(--dm-fourth-color);
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: var(--dm-fourth-color);
+  background: rgba(0,0,0,0.3);
+  text-shadow: 0 0 .5rem var(--dm-fourth-color);
+}
+
+.dm-key {
+  border: .4rem solid var(--lm-third-color);
+}
+
+.key-space {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.key-stop {
+  width: 20em;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: var(--dm-fifth-color);
+  box-shadow: 0 0 1rem var(--dm-fifth-color);
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: var(--dm-fifth-color);
+}
+
+.dm-sound {
+  color: var(--lm-fifth-color);
+}
