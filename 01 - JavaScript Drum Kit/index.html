@@ -77,6 +77,7 @@
     <audio data-key="186" src="sounds/12.5.18_Audio_277-No_excuses.mp3"></audio>
     
     <script>
+      // START PLAY SOUND
       function stopSound(e) {
         const allAudioPause = document.querySelectorAll('audio');
         allAudioPause.forEach(audio => audio.pause());
@@ -102,7 +103,9 @@
       
       window.addEventListener('keydown', playSound);
       window.addEventListener('click', stopSound);
+      // END PLAY SOUNDS
 
+      // DARK MODE START
       const h1Element = document.querySelector('h1');
       const h1Classes = h1Element.classList;
       const htmlElement = document.querySelector('html');
@@ -122,6 +125,7 @@
           dmIcon.src = "./assets/imgs/day-mode.png"
         }
       });
+      // DARK MODE END
     </script>
 
 
